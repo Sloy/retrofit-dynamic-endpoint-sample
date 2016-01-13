@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit.Callback;
@@ -13,13 +14,33 @@ import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String URL_1 = "http://api.sevibus.sloydev.com";
+    private static final String URL_2 = "https://sevibus.herokuapp.com";
+
     private SevibusApi sevibusApi;
     private SevibusEndpoint endpoint;
+    private TextView currentEndpointText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        currentEndpointText = ((TextView) findViewById(R.id.current_endpoint));
+
+        findViewById(R.id.url1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeEndpoint(URL_1);
+            }
+        });
+
+        findViewById(R.id.url2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeEndpoint(URL_2);
+            }
+        });
 
         findViewById(R.id.execute).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         sevibusApi = new RestAdapter.Builder()
           .setEndpoint(endpoint)
           .build().create(SevibusApi.class);
+    }
 
-        endpoint.setUrl("http://api.sevibus.sloydev.com");
-
+    private void changeEndpoint(String url) {
+        currentEndpointText.setText("Current endpoint: "+url);
+        endpoint.setUrl(url);
     }
 
     private void executeRequest() {

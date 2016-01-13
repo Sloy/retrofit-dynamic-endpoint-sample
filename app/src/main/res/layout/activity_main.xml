@@ -11,10 +11,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sloydev.dynamicretrofitendpoint.MainActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/url1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Url 1"/>
+
+        <Button
+            android:id="@+id/url2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Url 2"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/current_endpoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Current endpoint: #"/>
 
     <Button
