@@ -14,6 +14,7 @@ import retrofit.client.Response;
 public class MainActivity extends AppCompatActivity {
 
     private SevibusApi sevibusApi;
+    private SevibusEndpoint endpoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        endpoint = new SevibusEndpoint();
         sevibusApi = new RestAdapter.Builder()
-          .setEndpoint("http://api.sevibus.sloydev.com")
+          .setEndpoint(endpoint)
           .build().create(SevibusApi.class);
+
+        endpoint.setUrl("http://api.sevibus.sloydev.com");
 
     }
 
