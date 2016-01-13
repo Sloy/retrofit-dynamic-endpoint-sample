@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         endpoint = new SevibusEndpoint();
         sevibusApi = new RestAdapter.Builder()
+          .setLogLevel(RestAdapter.LogLevel.BASIC)
           .setEndpoint(endpoint)
           .build().create(SevibusApi.class);
     }
