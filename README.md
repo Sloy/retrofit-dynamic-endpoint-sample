@@ -1,5 +1,5 @@
 # Retrofit Dynamic Endpoint Sample
-I just wanted to quickly test if Retrofit handles a mutable endpoint which url can be modified. Since it works fine, I'll just share it here too.
+I just wanted to quickly test if Retrofit handles a mutable endpoint whose url can be modified. Since it works fine, I'll just share it here too.
 
 ### The magic 
 ```java
